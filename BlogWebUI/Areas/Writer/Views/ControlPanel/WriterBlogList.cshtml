@@ -1,0 +1,51 @@
+﻿@using EntityLayer.Concrete
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@model IPagedList<EntityLayer.Concrete.Blog>
+
+@{
+    ViewData["Title"] = "WriterBlogList";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Bloglarım</h4>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>#</th>
+                        <th>Blog Adı</th>
+                        <th>Blog Durumu</th>
+                        <th>Kategori</th>
+                        <th>Bloga git</th>
+                        <th>Düzenle</th>
+                        <th>Sil</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.BlogID</th>
+                            <td>@item.BlogTitle</td>
+                            <td>@item.BlogStatus</td>
+                            <td>@item.Category.CategoryName</td>
+                            <td><a href="/Blog/BlogDetails/@item.BlogID" class="btn btn-outline-primary">Bloga Git</a></td>
+                            <td><a href="/Writer/ControlPanel/EditBlog/@item.BlogID" class="btn btn-outline-info">Düzenle</a></td>
+
+                            <td><a href="/Writer/ControlPanel/DeleteBlog/@item.BlogID" class="btn btn-outline-danger">Sil</a></td>
+                        </tr>
+                    }
+                </table>
+                <br />
+                @Html.PagedListPager((IPagedList)Model,page=>Url.Action("WriterBlogList",new {page}))
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

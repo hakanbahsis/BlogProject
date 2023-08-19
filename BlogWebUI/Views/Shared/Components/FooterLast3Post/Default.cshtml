@@ -1,0 +1,41 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+
+<div class="col-lg-4 footer-grid-agileits-w3ls text-left">
+    <h3>Hakkımızda</h3>
+    <p>
+        @ViewBag.About
+
+    </p>
+    <div class="read">
+        <a href="/About/Index/" class="btn btn-primary read-m">Devamını Oku >></a>
+    </div>
+</div>
+<div class="col-lg-4 footer-grid-agileits-w3ls text-left">
+
+    <div class="tech-btm">
+        <h3>Son eklenen 3 gönderi</h3>
+        @foreach (var item in Model)
+        {
+            <div class="blog-grids row mb-3">
+                <div class="col-md-5 blog-grid-left">
+                    <a href="/Blog/BlogDetails/@item.BlogID/">
+                        <img src="@item.BlogThumbnailImage" class="card-img-top img-fluid" alt="">
+                    </a>
+                </div>
+                <div class="col-md-7 blog-grid-right">
+
+                    <h5>
+                        <a href="/Blog/BlogDetails/@item.BlogID/">@item.BlogTitle </a>
+                    </h5>
+                    <div class="sub-meta">
+                        <span>
+                            <i class="far fa-clock"></i> @Convert.ToDateTime(item.BlogCreateDate).ToString("dd-MMMM-yyyy")
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>

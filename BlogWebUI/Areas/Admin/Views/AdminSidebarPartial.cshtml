@@ -1,0 +1,78 @@
+﻿@using EntityLayer.Concrete
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<WriterUser> usertest
+@inject RoleManager<WriterRole> _writerRole
+@inject SignInManager<WriterUser> login
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    @if (login.IsSignedIn(User))
+                    {
+                        var girisyapan = await usertest.GetUserAsync(User);
+                        var girisrol = await usertest.GetRolesAsync(girisyapan);
+                        <img alt="image" class="rounded-circle" width="48" height="48" src="@girisyapan.ImageURL" />
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="block m-t-xs font-bold">@girisyapan.UserName  </span>
+                            <span class="text-danger text-xs block">@girisrol.FirstOrDefault()<b class="caret"></b></span>
+                        </a>
+                    }
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                        <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
+                        <li><a class="dropdown-item" href="mailbox.html">Mailbox</a></li>
+                        <li class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+            </li>
+            <li>
+                <a href="/Blog/Index/" target="_blank"><i class="fa fa-th-large"></i> <span class="nav-label">Blog Sayfasına Git</span>  </a>
+            </li>
+            <li>
+                <a href="/Admin/Widgets/Index/"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span>  </a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Grafikler</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="/Admin/Charts/Index/">Daire Grafigi</a></li>
+                    <li><a href="/Admin/Charts/Index2/">Column Grafigi</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/Writer/Message/SendMessage/"><i class="fa fa-envelope"></i> <span class="nav-label">Mesajlar</span>  </a>
+            </li>
+            <li>
+                <a href="/Admin/Category/CategoryList/"><i class="fa fa-square"></i> <span class="nav-label">Kategoriler</span>  </a>
+            </li>
+            <li>
+                <a href="/Admin/Blog/Index/"><i class="fa fa-th-large"></i> <span class="nav-label">Bloglar</span>  </a>
+            </li>
+            <li>
+                <a href="/Admin/Comment/Index/"><i class="fa fa-comment"></i> <span class="nav-label">Yorumlar</span>  </a>
+            </li>
+            <li>
+                <a href="/Admin/Announcements/Announcements/"><i class="fa fa-bullhorn"></i> <span class="nav-label">Duyurular</span>  </a>
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-lock"></i> <span class="nav-label">Rol Yönetimi</span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="/Admin/Role/Index/">Rol Listesi</a></li>
+                    <li><a href="/Admin/UserList/UsersList/">Üye Listesi</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/Admin/Contact/Index"><i class="fa fa-phone"></i> <span class="nav-label">iletişim</span>  </a>
+            </li>
+            <li>
+                <a href="/Admin/About/Index/"><i class="fa fa-users"></i> <span class="nav-label">Hakkımızda</span>  </a>
+            </li>
+        </ul>
+    </div>
+</nav>

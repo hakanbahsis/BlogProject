@@ -1,0 +1,67 @@
+﻿@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+<link href="~/web/css/contact.css" rel="stylesheet" />
+
+<section class="main-content-w3layouts-agileits">
+
+
+	@*	@await Html.PartialAsync("/Views/Contact/ContactMaps.cshtml")*@
+	@await Component.InvokeAsync("ContactList")
+
+	<div class="container">
+		<div class="contact_grid_right">
+			<div class="row contact_left_grid">
+				<div class="col-md-6 con-left">
+					<div class="form-group">
+						<label for="validationCustom01 my-2">Adınız</label>
+						<input class="form-control" type="text" id="ContactUserName" name="ContactUserName" placeholder="" required="">
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlInput1">Mail Adresiniz</label>
+						<input class="form-control" type="email" id="ContactMail" name="ContactMail" placeholder="" required="">
+					</div>
+					<div class="form-group">
+						<label for="validationCustom03 my-2">Konu</label>
+						<input class="form-control" type="text" id="ContactSubject" name="ContactSubject" placeholder="" required="">
+					</div>
+				</div>
+				<div class="col-md-6 con-right">
+					<div class="form-group">
+						<label for="textarea">Mesajınız</label>
+						<textarea name="ContactMessage" id="ContactMessage" placeholder=""></textarea>
+					</div>
+					<input class="form-control" id="btnsend" type="submit" value="Gönder">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+@section scripts{
+	<script>
+
+		$("#btnsend").click(function () {
+			let values = {
+				ContactUserName: $("#ContactUserName").val(),
+				ContactMail: $("#ContactMail").val(),
+				ContactSubject: $("#ContactSubject").val(),
+				ContactMessage: $("#ContactMessage").val()
+			};
+			$.ajax({
+				type: "post",
+				url: "/Contact/ContactAdd/",
+				data: values,
+				success: function (fnks) {
+					alert('Mesajınız başarıyla gönderildi.!')
+					let result = JQuery.parseJSON(fnks);
+
+				}
+			});
+		});
+
+	</script>
+}
+

@@ -1,0 +1,36 @@
+﻿@using EntityLayer.Concrete
+@model EntityLayer.Concrete.WritersMessage
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yazara Mesaj Gönder</h4>
+                @using (Html.BeginForm("SendMessage", "Message", FormMethod.Post))
+                {
+                    <label>Alıcı İsim</label>
+                    @Html.DropDownListFor(p=>p.Receiver,(List<SelectListItem>)ViewBag.WriterList,new{@class="form-control",@id="search"})
+                    <label>Başlık</label>
+                    <input type="text" class="form-control" name="Subject" />
+                    <label>Mesaj</label>
+                    <textarea type="text" class="form-control" name="MessageContent"></textarea>
+                    <input type="text" hidden class="form-control" name="Date" value="@DateTime.Now.Date" />
+                    <br />
+                    <button class="btn btn-outline-primary">Mesaj Gönder</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#search').select2();
+    });
+</script>

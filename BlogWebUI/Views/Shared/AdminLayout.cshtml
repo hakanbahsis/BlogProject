@@ -1,0 +1,64 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CasBlog</title>
+    <link href="~/admintema/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" rel="stylesheet">
+    <link href="~/admintema/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="~/admintema/css/animate.css" rel="stylesheet">
+    <link href="~/admintema/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        @await Html.PartialAsync("/Areas/Admin/Views/AdminSidebarPartial.cshtml")
+        <div id="page-wrapper" class="gray-bg">
+            @await Html.PartialAsync("/Areas/Admin/Views/AdminNavbarPartial.cshtml")
+            <div class="wrapper wrapper-content animated fadeInRight">
+                @RenderBody()
+            </div>
+            @* @await RenderSectionAsync("scripts",required:false)*@
+        </div>
+    </div>
+    <!-- Mainly scripts -->
+    <script src="~/admintema/js/jquery-3.1.1.min.js"></script>
+    <script src="~/admintema/js/popper.min.js"></script>
+    <script src="~/admintema/js/bootstrap.js"></script>
+    <script src="~/admintema/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/admintema/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Peity -->
+    <script src="~/admintema/js/plugins/peity/jquery.peity.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="~/admintema/js/inspinia.js"></script>
+    <script src="~/admintema/js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="~/admintema/js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- Peity -->
+    <script src="~/admintema/js/demo/peity-demo.js"></script>
+
+    <!-- Flot -->
+    <script src="~/admintema/js/plugins/flot/jquery.flot.js"></script>
+    <script src="~/admintema/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="~/admintema/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+
+</body>
+
+</html>

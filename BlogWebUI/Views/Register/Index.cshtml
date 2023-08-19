@@ -1,0 +1,64 @@
+﻿@model UserRegisterModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<section class="main-content-w3layouts-agileits">
+	<div class="container">
+		<h3 class="tittle">Kayıt Ol</h3>
+		<div class="inner-sec">
+			<div class="login p-5 bg-light mx-auto mw-100">
+
+				<form method="post">
+					<div class="form-row">
+						<div class="col-md-12 mb-3">
+							<label for="validationCustom01">Adınız Soyadınız</label>
+							<span asp-validation-for="Name" class="text-danger"></span>
+							<input type="text" name="Name" class="form-control" id="validationDefault01" placeholder="">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="col-md-12 mb-3">
+							<label for="validationCustom01">Kullanıcı Adınız</label>
+							<span asp-validation-for="UserName" class="text-danger"></span>
+							<input type="text" name="UserName" class="form-control" id="validationDefault01" placeholder="">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="col-md-12 mb-3">
+							<label for="validationCustom01">Mail Adresiniz</label>
+							<span asp-validation-for="Email" class="text-danger"></span>
+							<input type="text" name="Email" class="form-control" id="validationDefault01" placeholder="">
+						</div>
+
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="exampleInputPassword1 mb-2">Şifreniz</label>
+							<span asp-validation-for="Password" class="text-danger"></span>
+							<input type="password" name="Password" class="form-control" id="password1" placeholder="">
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label for="exampleInputPassword2 mb-2">Confirm Password</label>
+							<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+							<input type="password" name="ConfirmPassword" class="form-control" id="password2" placeholder="">
+						</div>
+					</div>
+
+					<input type="hidden" asp-for="ImageURL" value="as" />
+					<button type="submit" class="btn btn-primary submit mb-4">Kayıt Ol</button>
+					@*<p>
+					<a href="#">Tüm Şartları Okudum Kabul Ediyorum.</a>
+					</p>*@
+				</form>
+			</div>
+
+		</div>
+	</div>
+	</div>
+</section>
+

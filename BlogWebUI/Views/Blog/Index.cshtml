@@ -1,0 +1,77 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+}
+
+<section class="main-content-w3layouts-agileits">
+    <div class="container">
+
+        <h3 class="title"><span style="border-bottom:solid; border-bottom-color:#01cd74; border-bottom-width:4px;">Bloglar</span></h3>
+
+        <div class="inner-sec">
+            <!--left-->
+            <div class="left-blog-info-w3layouts-agileits text-left">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-lg-4 card  my-lg-4 my-md-1 my-0">
+                            <a href="/Blog/BlogDetails/@item.BlogID/">
+                                <img style="width:290px; height:232px;" src="@item.BlogThumbnailImage" class="card-img-top img-fluid" alt="">
+                                <div class="card-header card-img-overlay">
+                                    <span class="badge badge-primary">@item.Category.CategoryName</span>
+                                </div>
+                            </a>
+                            <div class="card-body">
+                                <ul class="blog-icons my-4">
+                                    <li>
+                                        <a href="#">
+                                            <i class="far fa-calendar-alt"></i> @Convert.ToDateTime(item.BlogCreateDate).ToString("dd-MMMM-yyyy")
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="far fa-comment"></i>Yorum sayısı
+                                        </a>
+                                    </li>
+                                </ul>
+                                <h5 class="card-title">
+                                    <span><a href="/Blog/BlogDetails/@item.BlogID/">@item.BlogTitle</a></span>
+                                </h5>
+                                <p class="card-text mb-3">@Html.Raw(item.BlogContent.Substring(0,250))
+                                    @*@item.BlogContent.Substring(0,item.BlogContent.Substring(0,200).LastIndexOf(" "))..*@</p>
+                                    <br>
+                                    <hr>
+                                <a href="/Blog/BlogDetails/@item.BlogID/" class="btn btn-primary read-m">Devamını Oku </a>
+                            </div>
+                        </div>
+                    }
+                    @*Sayfalama
+                    <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-left mt-4">
+                    <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item">
+                    <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                    </li>
+                    </ul>
+                    </nav>*@
+                </div>
+                <!--//left-->
+            </div>
+        </div>
+    </div>
+</section>

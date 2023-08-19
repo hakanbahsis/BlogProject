@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete
+
+<div class="tech-btm">
+    <h4>Mail Bültenine Abone Ol!</h4>
+    <p>Teknoloji,yazılım ve diğer bloglarlar...</p>
+    <input type="email" placeholder="Email" name="Mail" id="Mail">
+    <input id="mailadd" type="submit" value="Abone Ol !">
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#mailadd").click(function () {
+        let values = {
+            Mail: $("#Mail").val()
+        };
+        $.ajax({
+            type: "Post",
+            url: "/NewsLetter/SubsMail/",
+            data: values,
+            success: function (fnk1) {
+                let result = jQuery.parseJSON(fnk1);
+                console.log(result);
+                alert("Mail Bültenimize Abone olduğunuz için teşekkürler !");
+
+            }
+        });
+    });
+</script>

@@ -1,0 +1,67 @@
+﻿@using EntityLayer.Concrete;
+@model List<About>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<a href="/Admin/About/AddAbout/" class="btn btn-outline-success">Ekle</a>
+<div class="col-lg-12">
+    <div class="ibox ">
+        <div class="ibox-title">
+            <h5> Blog Listesi</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        <a href="#" class="dropdown-item">Config option 1</a>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-item">Config option 2</a>
+                    </li>
+                </ul>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-hover ">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Detay</th>
+                        <th>Detay 2</th>
+                        <th>Fotoğraf 1</th>
+                        <th>Fotoğraf 2</th>
+                        <th>Harita Bilgisi</th>
+                        <th>Durum</th>
+                        <th>Güncelle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.AboutID</th>
+                            <td>@item.AboutDetails1</td>
+                            <td>@item.AboutDetails2</td>
+                            <td>@item.AboutImage1</td>
+                            <td>@item.AboutImage2</td>
+                            <td>@item.AboutMapLocation</td>
+                            <td>@item.AboutStatus</td>
+                            <td><a href="/Admin/About/EditAbout/@item.AboutID" class="btn btn-outline-primary">Güncelle</a></td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

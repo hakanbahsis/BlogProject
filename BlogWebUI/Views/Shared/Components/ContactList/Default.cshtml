@@ -1,0 +1,62 @@
+﻿@using EntityLayer.Concrete
+@model List<ContactBox>
+
+@foreach (var item in Model)
+{
+    <h3 class="tittle">@item.Title</h3>
+    <p class="sub text-center">@item.SubTitle</p>
+    <div class="contact-map inner-sec">
+        <iframe src="@item.Map"
+                class="map" style="border:0" allowfullscreen=""></iframe>
+    </div>
+    <div class="ad-inf-sec bg-light">
+        <div class="container">
+            <div class="address row">
+
+                <div class="col-lg-4 address-grid">
+                    <div class="row address-info">
+                        <div class="col-md-4 address-left text-center">
+                            <i class="far fa-map"></i>
+                        </div>
+                        <div class="col-md-8 address-right text-left">
+                            <h6>Adres</h6>
+                            <p>
+                                @item.Adress
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 address-grid">
+                    <div class="row address-info">
+                        <div class="col-md-4 address-left text-center">
+                            <i class="far fa-envelope"></i>
+                        </div>
+                        <div class="col-md-8 address-right text-left">
+                            <h6>Email</h6>
+                            <p>
+                                Email :
+                                <a href="mailto:@item.Email">@item.Email</a>
+
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 address-grid">
+                    <div class="row address-info">
+                        <div class="col-md-4 address-left text-center">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="col-md-8 address-right text-left">
+                            <h6>Telefon</h6>
+                            <p>@item.Telefon</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

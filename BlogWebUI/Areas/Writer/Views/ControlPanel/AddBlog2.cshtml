@@ -1,0 +1,9 @@
+﻿@model EntityLayer.Concrete.Blog
+@{
+    ViewData["Title"] = "AddBlog2";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <input type="text" asp-for="blog" />
+</form>

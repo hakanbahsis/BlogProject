@@ -1,0 +1,33 @@
+﻿@using EntityLayer.Concrete
+@model List<WritersMessage>
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Bugün Gelen Mesajlar </h4>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Gönderici Adı</th>
+                                <th>Konusu</th>
+                                <th>Detay</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td> @item.SenderName </td>
+                                    <td> @item.Subject </td>
+                                    <td><a href="/Writer/Message/MessageDetails2/@item.ID" class="btn btn-outline-primary">Mesaj Detayı</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

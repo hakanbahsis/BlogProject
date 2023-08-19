@@ -1,0 +1,150 @@
+﻿@using EntityLayer.Concrete
+@model List<Blog>
+@{
+    ViewData["Title"] = "BlogDetails";
+    Layout = "~/Views/Shared/UserLayout.cshtml";
+
+}
+<section class="banner-bottom">
+    <!--/blog-->
+    <div class="container">
+        <div class="row">
+            <!--left-->
+            <div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
+                @foreach (var item in Model)
+                {
+                    <div class="blog-grid-top">
+                        <div class="b-grid-top">
+                            <div class="blog_info_left_grid">
+                                <a href="/Blog/BlogDetails/@item.BlogID/">
+                                    <img src="@item.BlogImage" class="img-fluid" alt="">
+                                </a>
+                            </div>
+                            <div class="blog-info-middle">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="far fa-calendar-alt"></i> @Convert.ToDateTime(item.BlogCreateDate).ToString("dd-MMMM-yyyy")
+                                        </a>
+                                    </li>
+                                    <li class="mx-2">
+                                        <a href="#">
+                                            <i class="far fa-thumbs-up"></i> 201 Likes
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="far fa-user"></i>Yazar: @item.WriterUser.Name
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="far fa-comment"></i>@ViewBag.val Yorum
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3>
+                            <a href="/Blog/BlogDetails/@item.BlogID/">@item.BlogTitle </a>
+                        </h3>
+                        <p>@Html.Raw(item.BlogContent)</p>
+
+                    </div>
+
+                    <div class="comment-top">
+                        <h4>Yorumlar</h4>
+                        <div id="listcom">
+
+                            <!--yorumlar-->
+                        </div>
+
+                    </div>
+                    <div class="comment-top">
+                        <h4>Yorum Yap</h4>
+
+                        <div class="comment-bottom">
+                            <input class="form-control b" type="text" id="CommentUserName" name="CommentUserName" placeholder="İsim & Soyisim" required="">
+                            <input class="form-control" type="hidden" name="BlogID" id="BlogID" value="@item.BlogID" placeholder="ID" required="">
+                            <textarea class="form-control" name="CommentContent" id="CommentContent" placeholder="Yorumunuz.." required=""></textarea>
+                            <input type="hidden" name="CommentDate" id="CommentDate" value="@DateTime.Now">
+                            <button type="submit" id="btncommentadd" class="btn btn-primary submit">Yorum Yap</button>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!--//left-->
+            <!--right-->
+            <!--Sağ kısım-->
+            @await Html.PartialAsync("/Views/Blog/BlogDetailsSideBar.cshtml")
+            <!--//right-->
+        </div>
+    </div>
+    @section scripts
+        {
+        <script>
+            //Yorum listeleme
+
+            $(document).ready(function () {
+                let id = $("#BlogID").val();
+                $.ajax({
+                    contentType: "application/json",
+                    dataType: "json",
+                    type: "Get",
+                    data: { BlogID: id },
+                    url: "/Comment/CommentList/",
+                    success: function (funk) {
+                        let values = jQuery.parseJSON(funk);
+                        if (values.length == 0) {
+                            $('#listcom').html(`Henüz Yorum yok Hadi ilk yorumu sen yap !`);
+                        } else {
+                            let htmlst = ``;
+                            $.each(values, (index, value) => {
+                                htmlst += `<div class="media"><img style="width:64px; height:64px;" src=${value.UserImage} alt="" class="img-fluid" />  <div class="media-body"> <h5 class="mt-0">${value.CommentUserName}</h5><p>${value.CommentContent}</p></div></div>`;
+                            });
+                            $("#listcom").html(htmlst);
+                        }
+                    }
+                });
+            });
+
+
+            //Yorum ekleme
+            $("#btncommentadd").click(function (event) {
+                event.preventDefault();
+                let values = {
+                    BlogID: $("#BlogID").val(),
+                    CommentUserName: $("#CommentUserName").val(),
+                    CommentTitle: $("#CommentTitle").val(),
+                    CommentContent: $("#CommentContent").val(),
+                    CommentDate: $("#CommentDate").val()
+                };
+                $.ajax({
+                    type: "Post",
+                    url: "/Comment/CommentAdd/",
+                    data: values,
+                    success: function (fnk1) {
+                        let value = jQuery.parseJSON(fnk1);
+                        let htmlstr = ``;
+                        htmlstr = `<div class="media"><img style="width:64px; height:64px;" src=${value.UserImage} alt="" class="img-fluid" />  <div class="media-body"> <h5 class="mt-0">${value.CommentUserName}</h5><p>${value.CommentContent}</p></div></div>`;
+                        $("#listcom").append(htmlstr);
+                    }
+                });
+            });
+
+
+
+
+        </script>
+    }
+    @*    <script src="~/web/js/jquery-2.2.3.min.js"></script>
+    *@
+
+
+
+</section>
+
+

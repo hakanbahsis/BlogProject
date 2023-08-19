@@ -1,0 +1,32 @@
+﻿@using BlogWebUI.Areas.Writer.Models;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model UserProfileEdit
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Profil</h4>
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Adınız & Soyadınız</label>
+                <input type="text" class="form-control" value="@Model.Name" name="Name" placeholder="Adınız.." />
+            </div>
+            <div class="form-group">
+                <label>Şifre</label>
+                <input type="text" class="form-control" name="Password" placeholder="Şifreniz.." />
+            </div>
+            <div class="form-group">
+                <label>Şifre Tekrar</label>
+                <input type="text" class="form-control" name="PasswordConfirm" placeholder="Şifrenizi tekrar giriniz.." />
+            </div>
+            <div class="form-group">
+                <label>Avatarınızı seçiniz</label>
+                <input type="file" asp-for="Picture">
+            </div>
+            <button type="submit" class="btn btn-primary mr-2">Güncelle</button>
+        </form>
+    </div>
+</div>
