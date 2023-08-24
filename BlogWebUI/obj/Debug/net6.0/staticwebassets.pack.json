@@ -6365,12 +6365,20 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\images\\095903ad-9b1d-4d4a-be20-ecc378ffc0ec.png",
+      "PackagePath": "staticwebassets\\images\\095903ad-9b1d-4d4a-be20-ecc378ffc0ec.png"
+    },
+    {
       "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\images\\14f410a4-eb5e-46f4-acf7-53a4e992de20.jpeg",
       "PackagePath": "staticwebassets\\images\\14f410a4-eb5e-46f4-acf7-53a4e992de20.jpeg"
     },
     {
       "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\images\\3dfb78b6-95b9-4ec1-8713-e66478ad35d5.jpeg",
       "PackagePath": "staticwebassets\\images\\3dfb78b6-95b9-4ec1-8713-e66478ad35d5.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\images\\5a0c29d4-0686-44e5-999b-53ce32af6c2b.jpg",
+      "PackagePath": "staticwebassets\\images\\5a0c29d4-0686-44e5-999b-53ce32af6c2b.jpg"
     },
     {
       "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\images\\764a13b8-4186-427e-bb06-973d06313e8a.png",
@@ -6383,6 +6391,14 @@
     {
       "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\images\\9095c253-976a-406b-9bc7-2baa13c5c03e.jpeg",
       "PackagePath": "staticwebassets\\images\\9095c253-976a-406b-9bc7-2baa13c5c03e.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\images\\b846d899-87dc-4b91-8520-84da132fe205.jpeg",
+      "PackagePath": "staticwebassets\\images\\b846d899-87dc-4b91-8520-84da132fe205.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\images\\c3bd84b7-1098-4517-8e63-7f6568d00f2e.png",
+      "PackagePath": "staticwebassets\\images\\c3bd84b7-1098-4517-8e63-7f6568d00f2e.png"
     },
     {
       "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\js\\site.js",
@@ -6615,6 +6631,14 @@
     {
       "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\userimage\\7e1ff3cf-c18c-428e-a6cd-d6a988cd758b.png",
+      "PackagePath": "staticwebassets\\userimage\\7e1ff3cf-c18c-428e-a6cd-d6a988cd758b.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\userimage\\f352e90c-487a-491c-a795-f197f424e609.png",
+      "PackagePath": "staticwebassets\\userimage\\f352e90c-487a-491c-a795-f197f424e609.png"
     },
     {
       "Id": "C:\\Users\\Lenovo\\source\\repos\\BlogProject\\BlogWebUI\\wwwroot\\userimage\\resimyok.jpg",

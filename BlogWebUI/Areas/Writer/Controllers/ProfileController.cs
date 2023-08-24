@@ -46,7 +46,7 @@ namespace BlogWebUI.Areas.Writer.Controllers
                 var savelocation = resoure + "/wwwroot/userimage/" + imagename;
                 var stream = new FileStream(savelocation, FileMode.Create);
                 await u.Picture.CopyToAsync(stream);
-                user.ImageURL = imagename;
+                user.ImageURL = "/userimage/"+ imagename;
             }
             user.Name = u.Name;
             user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, u.Password);

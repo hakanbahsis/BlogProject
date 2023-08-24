@@ -14,7 +14,7 @@
                     var girisyapan = await usertest.GetUserAsync(User);
                     var girisrol = await usertest.GetRolesAsync(girisyapan);
                     <div class="nav-profile-image">
-                        <img src="/userimage/@girisyapan.ImageURL" alt="profile">
+                        <img src="@girisyapan.ImageURL" alt="profile">
                         <span class="login-status online"></span>
                         <!--change to offline or busy as needed-->
                     </div>
